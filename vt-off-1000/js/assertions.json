@@ -1,0 +1,18 @@
+{
+  "simulation": "de.tschuehly.gatling.demo.LoadTestScenario",
+  "simulationId": "loadtestscenario-20231202223921408",
+  "start": 1701556762459,
+  "description": "",
+  "scenarios": ["Load Test greeting"],
+  "assertions": [
+{
+  "path": "wait for",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [1.0],
+  "result": true,
+  "message": "wait for: percentage of failed events is less than or equal to 1.0",
+  "actualValue": [0.0]
+}
+  ]
+}

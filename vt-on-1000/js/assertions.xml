@@ -1,0 +1,5 @@
+<testsuite name="de.tschuehly.gatling.demo.LoadTestScenario" tests="1" errors="0" failures="1" time="0">
+<testcase name="wait for: percentage of failed events is less than or equal to 1.0" status="false" time="0">
+  <failure type="wait for">Actual value: 14.7</failure>
+</testcase>
+</testsuite>
