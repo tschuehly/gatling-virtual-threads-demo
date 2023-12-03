@@ -21,19 +21,25 @@ import static io.gatling.javaapi.http.HttpDsl.status;
 public class LoadTestScenario extends Simulation {
 
   final HttpProtocolBuilder httpProtocol = http
-      .baseUrl("http://localhost:8080")
+      .baseUrl("https://auth-server-tschuehly.koyeb.app")
       .acceptHeader("application/json")
       .userAgentHeader("Gatling performance Test");
 
   ScenarioBuilder sampleScenario = scenario("Load Test greeting")
-      .exec(http("wait for")
-          .get(session -> "/wait/" + 1)
+      . exec(http("wait for")
+          .get(session -> "/login")
           .check(status().is(200))
       );
+/*      .repeat(10).on(
+          exec(http("wait for")
+              .get(session -> "/wait/" + 1)
+              .check(status().is(200))
+          )
+      );*/
 
   public LoadTestScenario() {
     this.setUp(sampleScenario.injectOpen(
-            atOnceUsers(1000)
+            rampUsers(1000).during(10)
         ))
         .assertions(forAll().failedRequests().percent().lte(1D))
         .protocols(httpProtocol);
