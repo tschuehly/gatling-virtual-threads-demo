@@ -39,7 +39,7 @@ public class LoadTestScenario extends Simulation {
 
   public LoadTestScenario() {
     this.setUp(sampleScenario.injectOpen(
-            rampUsers(1000).during(10)
+            rampUsers(10000).during(10)
         ))
         .assertions(forAll().failedRequests().percent().lte(1D))
         .protocols(httpProtocol);
